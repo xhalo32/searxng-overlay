@@ -1,0 +1,39 @@
+name: Update npins
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 10 * * 0" # https://crontab.guru/#0_10_*_*_0
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - uses: nixbuild/nix-quick-install-action@v34
+        with:
+          nix_version: 2.31.2
+          nix_conf: |
+            keep-env-derivations = true
+            keep-outputs = true
+      - name: Restore and save Nix store
+        uses: nix-community/cache-nix-action@v7
+        with:
+          primary-key: nix-${{ runner.os }}
+      - name: Update pins
+        run: >
+          NIX_BUILD_SHELL=bash nix-shell - --run "npins update" < <(echo "{sources ? import ./npins, pkgs ? import sources.nixpkgs {}}: pkgs.mkShell {buildInputs=[pkgs.npins];}")
+      - name: Build SearXNG
+        run: |
+          nix-build -A searxng-static
+          nix-build -A searxng
+      - name: Commit
+        run: |
+          git config --local user.email "actions@users.noreply.github.com"
+          git config --local user.name "GitHub Actions"
+          git commit -am "chore: update npins"
+          git push

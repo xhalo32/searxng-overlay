@@ -13,7 +13,7 @@ rec {
     version = "master";
     src = sources.searxng;
     npmRoot = "client/simple";
-    # npmFlags = [ "--loglevel=verbose" ];
+    npmFlags = [ "--loglevel=verbose" ];
     # npmDeps = pkgs.importNpmLock { npmRoot = "${finalAttrs.src}/client/simple"; };
     npmDepsHash = "sha256-kSx2IvAMKHNoZeS1Tac1haDPKYz/yHUND1boqT4Fbto=";
     # https://github.com/privau/searxng/blob/main/update.sh

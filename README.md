@@ -35,6 +35,13 @@ To add the overlay to your pkgs with the (possibly outdated) sources provided by
 > })
 > ```
 
+To add `searxng` and `privau-searxng` as sources to your project, use
+
+```
+npins add github searxng searxng --branch master
+npins add github privau searxng --branch main --name privau-searxng
+```
+
 ## Background
 
 To figure out how to rebuild the stylesheets I read throgh privau's [update.sh](https://github.com/privau/searxng/blob/d81eb1fba5285c3459067da504813571a2592d24/update.sh) and [Dockerfile](https://github.com/privau/searxng/blob/d81eb1fba5285c3459067da504813571a2592d24/Dockerfile).
