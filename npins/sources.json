@@ -1,0 +1,44 @@
+{
+  "pins": {
+    "nixpkgs": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "nixos",
+        "repo": "nixpkgs"
+      },
+      "branch": "nixos-unstable",
+      "submodules": false,
+      "revision": "d233902339c02a9c334e7e593de68855ad26c4cb",
+      "url": "https://github.com/nixos/nixpkgs/archive/d233902339c02a9c334e7e593de68855ad26c4cb.tar.gz",
+      "hash": "sha256-30sZNZoA1cqF5JNO9fVX+wgiQYjB7HJqqJ4ztCDeBZE="
+    },
+    "privau-searxng": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "privau",
+        "repo": "searxng"
+      },
+      "branch": "main",
+      "submodules": false,
+      "revision": "d81eb1fba5285c3459067da504813571a2592d24",
+      "url": "https://github.com/privau/searxng/archive/d81eb1fba5285c3459067da504813571a2592d24.tar.gz",
+      "hash": "sha256-asZSQQ4fEZDG0WjsfZj+v0TJYGNyGeDSu8A00VCOOU4="
+    },
+    "searxng": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "searxng",
+        "repo": "searxng"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "d7e8b7cd1896272dc2cc54531c8e5f72461e84bb",
+      "url": "https://github.com/searxng/searxng/archive/d7e8b7cd1896272dc2cc54531c8e5f72461e84bb.tar.gz",
+      "hash": "sha256-z59q2yPdXTL+lo1HgH6w10NSrdAyiOsS9zQCQx72+gA="
+    }
+  },
+  "version": 7
+}
