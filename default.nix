@@ -13,16 +13,17 @@ rec {
     version = "master";
     src = sources.searxng;
     npmRoot = "client/simple";
-    npmFlags = [ "--loglevel=verbose" ];
-    # npmDeps = pkgs.importNpmLock { npmRoot = "${finalAttrs.src}/client/simple"; };
-    npmDepsHash = "sha256-kSx2IvAMKHNoZeS1Tac1haDPKYz/yHUND1boqT4Fbto=";
+    npmDeps = pkgs.fetchNpmDeps {
+      src = "${sources.searxng}/client/simple";
+      hash = "sha256-kSx2IvAMKHNoZeS1Tac1haDPKYz/yHUND1boqT4Fbto=";
+    };
     # https://github.com/privau/searxng/blob/main/update.sh
     prePatch = ''
       cp -r ${sources.privau-searxng}/src/less/. client/simple/src/less
     '';
     # Why is this needed when `npmRoot` is set?
     preBuild = ''
-      cd client/simple
+      cd ${finalAttrs.npmRoot}
     '';
     installPhase = ''
       mkdir $out
